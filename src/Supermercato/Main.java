@@ -9,6 +9,17 @@ public class Main {
         int numCasse = 3;
 
         // avvia il programma
+        // lo avvia in base a quanti clienti e quante casse noi decidiamo di mettere
+        // si potrebbe anche fare in modo che questi dati vengano chiedi all'utente a programma gia avviato.
+
+        // import java.util.Scanner;
+        // Scanner scanner = new Scanner(System.in);
+        // System.out.println("Inserisci il numero di clienti:");
+        // numClienti = scanner.nextInt();
+        // System.out.println("Inserisci il numero di casse:");
+        // numCasse = scanner.nextInt();
+
+
         Supermercato supermercato = new Supermercato(numCasse);
         supermercato.avviaSimulazione(numClienti);
     }

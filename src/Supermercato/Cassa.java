@@ -34,6 +34,7 @@ public class Cassa implements Runnable {
     }
 
     public int getLunghezzaCoda() {
+        // evita la concorezza sulla lunghezza della coda
         synchronized (codaClienti) {
             return codaClienti.size();
         }
@@ -58,7 +59,7 @@ public class Cassa implements Runnable {
                 int articoli;
                 synchronized (codaClienti) {
                     while (codaClienti.isEmpty()) {
-                        // wait che attende nuovi clienti
+                        // wait che attende nuovi clienti per l'elaborazione
                         codaClienti.wait();
                     }
                     articoli = codaClienti.remove(0);

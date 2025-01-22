@@ -11,10 +11,11 @@ public class StatisticheCassa {
     public StatisticheCassa(String nomeCassa, String emoji) {
         this.nomeCassa = nomeCassa;
         this.emoji = emoji;
+        // fa partire le statistiche da ovviamente 0
         this.clientiServiti = 0;
         this.articoliTotali = 0;
     }
-    // synchronized
+    // synchronized (che evita la concorrenza di questa parte)
     public synchronized void aggiungiCliente(int articoli) {
         clientiServiti++;
         articoliTotali += articoli;
