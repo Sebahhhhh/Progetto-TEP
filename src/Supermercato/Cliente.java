@@ -8,13 +8,14 @@ public class Cliente implements Runnable {
 
     private final String nome;
     private final List<Cassa> casse;
-    private final Semaphore mutexCoda;
+    private final Semaphore Codaa;
     private final Random random;
 
-    public Cliente(String nome, List<Cassa> casse, Semaphore mutexCoda) {
+    // costruttore
+    public Cliente(String nome, List<Cassa> casse, Semaphore codaa) {
         this.nome = nome;
         this.casse = casse;
-        this.mutexCoda = mutexCoda;
+        this.Codaa = codaa;
         this.random = new Random();
     }
 
@@ -32,22 +33,25 @@ public class Cliente implements Runnable {
             System.out.println(" ");
             System.out.println("🛒 " + nome + " ha finito di fare la spesa e si dirige alle casse.");
 
-            // cerca la cassa piu corta, è thread-safe
-            mutexCoda.acquire();
+            // cerca la cassa piu corta. E' trhead safe
+            Codaa.acquire();
+            // get 0 perchè prende il primo elemento della lista (che è la cassa piu corta)
             Cassa cassaScelta = casse.get(0);
+            // ciclo for-each spiegato nell'altro file
             for (Cassa cassa : casse) {
                 if (cassa.getLunghezzaCoda() < cassaScelta.getLunghezzaCoda()) {
                     cassaScelta = cassa;
                 }
             }
+            // Output che dice che cassa ha scelto e quanta coda ha
             System.out.println("➡️ " + nome + " ha scelto la " + cassaScelta.getNomeEmoji() + " (Coda: " + cassaScelta.getLunghezzaCoda() + " clienti)");
-            mutexCoda.release();
+            Codaa.release();
 
-            // viene aggiunto alla casa
+            // viene aggiunto alla cassa
             cassaScelta.aggiungiCliente(articoli);
 
         } catch (InterruptedException e) {
-            System.out.println(nome + " ha riscontrato un errore: " + e.getMessage());
+            System.out.println(nome + " errore: " + e.getMessage());
         }
     }
 }
