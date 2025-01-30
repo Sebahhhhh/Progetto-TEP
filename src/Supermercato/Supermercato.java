@@ -1,11 +1,13 @@
 package Supermercato;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
 public class Supermercato {
 
+    // variabili
     private final List<Cassa> casse;
     private final Semaphore coda;
     private int clientiTotali;
@@ -23,7 +25,7 @@ public class Supermercato {
         casse.add(new Cassa("BETA", 2000, "\uD83D\uDD35"));
         casse.add(new Cassa("GAMMA", 3200, "\uD83D\uDD36"));
     }
-     // si usa nel main per avviare il programma (apre il negozio)
+     // si usa nel main per avviare il programma  (in base ai parametri che gli diamo nel main)
     public void avviaSimulazione(int numClienti) {
         clientiTotali = numClienti;
 
@@ -46,24 +48,32 @@ public class Supermercato {
         }
 
         // fa entrare i clienti
+        // ciclo per creare e avviare i thread dei clienti
         for (int i = 1; i <= numClienti; i++) {
+            // crea un nuovo cliente (il +i serve per creare un cliente sicuramente nuovo, univoco)
             Cliente cliente = new Cliente("Cliente-" + i, casse, coda);
+            // vvvia un nuovo thread per il cliente appena creato
             new Thread(cliente).start();
             try {
-                Thread.sleep(700); // attesa per farli entrare, fra uno e l'altro
+                // attende 700 millisecondi prima di far entrare il prossimo cliente
+                Thread.sleep(700);
+                // volendo si può fare in modo che i clienti entrino in modo casuale
+                // intervallo di tempo casuale tra 400 e 900 ms
+                // Thread.sleep(400 + new Random().nextInt(501));
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-        // si accerta, aspettand un po', che tutte le casse abbiano terminato
+        // si accerta, aspettando un po', che tutte le casse abbiano terminato
         // **
         try {
             Thread.sleep((numClienti * 4000) + 4500); // stima del tempo (non ho idea di come fare per fare in modo che si esegua solo  al termine definitivo delle casse)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        // richiama il metodo per mostrare le statistiche
         mostraStatistiche();
     }
 

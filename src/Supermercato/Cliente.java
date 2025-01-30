@@ -5,8 +5,9 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Cliente implements Runnable {
-
+    // variabili
     private final String nome;
+    // arraylist di casse
     private final List<Cassa> casse;
     private final Semaphore Codaa;
     private final Random random;
@@ -36,6 +37,7 @@ public class Cliente implements Runnable {
             // cerca la cassa piu corta. E' trhead safe
             Codaa.acquire();
             // get 0 perchè prende il primo elemento della lista (che è la cassa piu corta)
+            // se la coda è vuota, prende la prima cassa
             Cassa cassaScelta = casse.get(0);
             // ciclo for-each spiegato nell'altro file
             for (Cassa cassa : casse) {
@@ -47,7 +49,7 @@ public class Cliente implements Runnable {
             System.out.println("➡️ " + nome + " ha scelto la " + cassaScelta.getNomeEmoji() + " (Coda: " + cassaScelta.getLunghezzaCoda() + " clienti)");
             Codaa.release();
 
-            // viene aggiunto alla cassa
+            // si aggiunge alla coda della cassa scelta
             cassaScelta.aggiungiCliente(articoli);
 
         } catch (InterruptedException e) {
