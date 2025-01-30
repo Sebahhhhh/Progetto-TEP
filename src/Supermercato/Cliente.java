@@ -24,7 +24,7 @@ public class Cliente implements Runnable {
     public void run() {
         try {
             // numero di articoli casuali da 2 a 10
-            int articoli = random.nextInt(9) + 2;
+            int articoli = random.nextInt(8) + 2;
             System.out.println("\n╔═════════════════════════════════════════════════════════════════╗");
             System.out.println("  " + nome + " entra nel supermercato con " + articoli + " articoli da prendere. ");
             System.out.println("╚═════════════════════════════════════════════════════════════════╝");

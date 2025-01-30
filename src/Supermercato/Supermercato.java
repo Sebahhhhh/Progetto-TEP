@@ -69,7 +69,7 @@ public class Supermercato {
         // si accerta, aspettando un po', che tutte le casse abbiano terminato
         // **
         try {
-            Thread.sleep((numClienti * 4000) + 4500); // stima del tempo (non ho idea di come fare per fare in modo che si esegua solo  al termine definitivo delle casse)
+            Thread.sleep((numClienti * 4100) + 4700); // stima del tempo (non ho idea di come fare per fare in modo che si esegua solo  al termine definitivo delle casse)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

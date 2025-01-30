@@ -10,7 +10,7 @@ public class Main {
 
         // avvia il programma
         // lo avvia in base a quanti clienti e quante casse noi decidiamo di mettere
-        // si potrebbe anche fare in modo che questi dati vengano chiedi all'utente a programma gia avviato.
+        // si potrebbe anche fare in modo che questi dati vengano chiesti all'utente a programma gia avviato.
 
         // import java.util.Scanner;
         // Scanner scanner = new Scanner(System.in);
