@@ -1,4 +1,4 @@
-package Supermercato;
+package Hellcat;
 
 public class StatisticheCassa {
 

@@ -1,4 +1,4 @@
-package Supermercato;
+package Hellcat;
 
 public class Main {
     public static void main(String[] args) {

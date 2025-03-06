@@ -1,4 +1,4 @@
-# Supermercato Simulation
+# Hellcat Simulation
 
 ## Descrizione
 
@@ -9,7 +9,7 @@ Questo programma simula il funzionamento di un supermercato con più casse. I cl
 Il progetto è composto dai seguenti file principali:
 
 - `Main.java`: Il punto di ingresso del programma. Avvia la simulazione con un numero specificato di clienti e casse.
-- `Supermercato.java`: Gestisce la creazione delle casse e l'avvio della simulazione.
+- `Hellcat.java`: Gestisce la creazione delle casse e l'avvio della simulazione.
 - `Cassa.java`: Rappresenta una cassa del supermercato. Implementa l'interfaccia `Runnable` per elaborare i clienti in un thread separato.
 - `Cliente.java`: Rappresenta un cliente del supermercato. Implementa l'interfaccia `Runnable` per simulare il comportamento del cliente in un thread separato.
 - `StatisticheCassa.java`: Tiene traccia delle statistiche per ogni cassa, come il numero di clienti serviti e il numero totale di articoli elaborati.
@@ -34,7 +34,7 @@ public class Main {
         int numClienti = 15; // Numero di clienti
         int numCasse = 3;    // Numero di casse
 
-        Supermercato supermercato = new Supermercato(numCasse);
+        Hellcat supermercato = new Hellcat(numCasse);
         supermercato.avviaSimulazione(numClienti);
     }
 }
